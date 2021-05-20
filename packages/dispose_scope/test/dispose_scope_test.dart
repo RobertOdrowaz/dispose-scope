@@ -1,9 +1,9 @@
+import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'disposable.dart';
-import 'dispose_scope_implementation.dart';
 import 'dispose_scope_test.mocks.dart';
 
 @GenerateMocks([Disposable])
@@ -11,14 +11,14 @@ void main() {
   group(
     'DisposeScope',
     () {
-      late DisposeScopeImplementation scope;
+      late DisposeScope scope;
       late MockDisposable disposable1;
       late MockDisposable disposable2;
       late MockDisposable disposable3;
 
       setUp(
         () {
-          scope = DisposeScopeImplementation();
+          scope = DisposeScope();
           disposable1 = MockDisposable();
           disposable2 = MockDisposable();
           disposable3 = MockDisposable();

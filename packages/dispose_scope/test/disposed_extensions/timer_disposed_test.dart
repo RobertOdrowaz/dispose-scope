@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:dispose_scope/src/disposed_extensions/timer_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../dispose_scope_implementation.dart';
 import 'timer_disposed_test.mocks.dart';
 
 @GenerateMocks([Timer])
@@ -13,12 +13,12 @@ void main() {
   group(
     'TimerDisposed',
     () {
-      late DisposeScopeImplementation scope;
+      late DisposeScope scope;
       late MockTimer timer;
 
       setUp(
         () {
-          scope = DisposeScopeImplementation();
+          scope = DisposeScope();
           timer = MockTimer();
         },
       );
