@@ -9,8 +9,7 @@ environment:
   flutter: ">=2.0.0"
 
 dependencies:
-  dispose_scope:
-    path: "../dispose_scope"
+  dispose_scope: ^0.0.1
   flutter:
     sdk: flutter
 
