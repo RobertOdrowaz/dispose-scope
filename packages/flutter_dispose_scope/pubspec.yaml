@@ -19,3 +19,7 @@ dev_dependencies:
     sdk: flutter
   lint: ^1.5.3
   mockito: ^5.0.8
+
+dependency_overrides:
+  dispose_scope:
+    path: ../dispose_scope
