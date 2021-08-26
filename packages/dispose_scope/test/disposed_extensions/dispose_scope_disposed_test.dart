@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../dispose_scope_implementation.dart';
 import 'dispose_scope_disposed_test.mocks.dart';
 
 @GenerateMocks([DisposeScope])
@@ -12,12 +11,12 @@ void main() {
   group(
     'ConnectionTaskDisposed',
     () {
-      late DisposeScopeImplementation scope;
+      late DisposeScope scope;
       late MockDisposeScope disposeScope;
 
       setUp(
         () {
-          scope = DisposeScopeImplementation();
+          scope = DisposeScope();
           disposeScope = MockDisposeScope();
         },
       );

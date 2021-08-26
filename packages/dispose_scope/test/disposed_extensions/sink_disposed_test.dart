@@ -1,9 +1,9 @@
+import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:dispose_scope/src/disposed_extensions/sink_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../dispose_scope_implementation.dart';
 import 'sink_disposed_test.mocks.dart';
 
 @GenerateMocks([Sink])
@@ -11,12 +11,12 @@ void main() {
   group(
     'SinkDisposed',
     () {
-      late DisposeScopeImplementation scope;
+      late DisposeScope scope;
       late MockSink sink;
 
       setUp(
         () {
-          scope = DisposeScopeImplementation();
+          scope = DisposeScope();
           sink = MockSink();
         },
       );

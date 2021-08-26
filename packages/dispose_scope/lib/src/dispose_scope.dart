@@ -1,6 +1,6 @@
 import 'package:dispose_scope/src/dispose.dart';
 
-mixin DisposeScope {
+class DisposeScope {
   final _disposes = <Dispose>[];
 
   void addDispose(Dispose dispose) => _disposes.add(dispose);
