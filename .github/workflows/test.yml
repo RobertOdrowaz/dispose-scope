@@ -1,0 +1,30 @@
+name: Test
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Setup flutter
+        uses: subosito/flutter-action@v1
+
+      - name: Install melos
+        run: flutter pub global activate melos
+
+      - name: Get dependencies
+        run: melos run get
+
+      - name: Check formatting
+        run: flutter format --set-exit-if-changed .
+
+      - name: Run analyzer
+        run: melos run analyze
+
+      - name: Run tests
+        run: melos run test --no-select
