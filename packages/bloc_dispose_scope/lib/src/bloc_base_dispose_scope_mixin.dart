@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dispose_scope/dispose_scope.dart';
-import 'package:flutter/widgets.dart';
+import 'package:meta/meta.dart';
 
 mixin BlocBaseDisposeScopeMixin<State> on BlocBase<State> {
   var _scope = DisposeScope();

@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_dispose_scope/src/disposed_extensions/bloc_base_disposed.dart';
 import 'package:dispose_scope/src/dispose_scope.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 import 'bloc_base_disposed_test.mocks.dart';
 
