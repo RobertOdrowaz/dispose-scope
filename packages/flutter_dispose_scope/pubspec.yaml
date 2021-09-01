@@ -1,6 +1,6 @@
 name: flutter_dispose_scope
 description: Package supporting flutter types for dispose_scope.
-version: 0.0.1
+version: 1.0.0
 repository: https://github.com/RobertOdrowaz/dispose-scope/tree/master/packages/flutter_dispose_scope
 issue_tracker: https://github.com/RobertOdrowaz/dispose-scope/issues
 homepage: https://github.com/RobertOdrowaz/dispose-scope
@@ -10,7 +10,7 @@ environment:
   flutter: ">=2.0.0"
 
 dependencies:
-  dispose_scope: ^0.0.1
+  dispose_scope: ^1.0.0
   flutter:
     sdk: flutter
   meta: ^1.3.0
