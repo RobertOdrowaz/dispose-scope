@@ -5,15 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dispose_scope/flutter_dispose_scope.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const App());
 }
 
-class MyApp extends StatefulWidget {
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
+
   @override
-  _MyAppState createState() => _MyAppState();
+  _AppState createState() => _AppState();
 }
 
-class _MyAppState extends State<MyApp> with StateDisposeScopeMixin {
+class _AppState extends State<App> with StateDisposeScopeMixin {
   @override
   void initState() {
     super.initState();
@@ -27,7 +29,7 @@ class _MyAppState extends State<MyApp> with StateDisposeScopeMixin {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: SizedBox(),
     );
   }
