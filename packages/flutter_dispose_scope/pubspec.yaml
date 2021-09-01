@@ -1,8 +1,9 @@
 name: flutter_dispose_scope
-description: A new Flutter package project.
+description: Package supporting flutter types for dispose_scope.
 version: 0.0.1
-author:
-homepage:
+repository: https://github.com/RobertOdrowaz/dispose-scope/tree/master/packages/flutter_dispose_scope
+issue_tracker: https://github.com/RobertOdrowaz/dispose-scope/issues
+homepage: https://github.com/RobertOdrowaz/dispose-scope
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
