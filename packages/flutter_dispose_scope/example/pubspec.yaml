@@ -13,6 +13,9 @@ dependencies:
   flutter_dispose_scope:
     path: ../
 
+dev_dependencies:
+  lint: ^1.5.3
+
 dependency_overrides:
   dispose_scope:
     path: ../../dispose_scope
