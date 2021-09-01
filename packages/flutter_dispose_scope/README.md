@@ -1,14 +1,36 @@
-# flutter_dispose_scope
+# BlocDisposeScope
 
-A new Flutter package project.
+BlocDisposeScope adds support for flutter related types to [dispose_scope](https://pub.dev/packages/dispose_scope) package.
 
-## Getting Started
+## Usage
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+```dart
+import 'package:flutter_dispose_scope/flutter_dispose_scope.dart';
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> with StateDisposeScopeMixin {
+  @override
+  void initState() {
+    super.initState();
+
+    // StreamSubscription will be cancelled when widget is disposed
+    const Stream.empty().listen((event) {}).disposed(scope);
+
+    // Timer will be cancelled when widget is disposed
+    Timer(Duration.zero, () {}).disposed(scope);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: SizedBox(),
+    );
+  }
+}
+```

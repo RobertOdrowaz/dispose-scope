@@ -1,14 +1,26 @@
-# dispose_scope
+# DisposeScope
 
-A new Flutter package project.
+DisposeScope reduces the amount of boilerplate related to disposing/canceling/closing objects when no longer needed.
+The `DisposeScope` class stores references to appropriate `dispose`/`close`/`cancel` methods and calls them when the scope is disposed.
 
-## Getting Started
+This package can be used by itself however it's mainly intended as base for [flutter_dispose_scope](https://pub.dev/packages/flutter_dispose_scope) and [bloc_dispose_scope](https://pub.dev/packages/bloc_dispose_scope) packages.
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+## Usage
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+```dart
+import 'package:dispose_scope/dispose_scope.dart';
+
+final disposeScope = DisposeScope();
+
+// StreamSubscription will be cancelled when disposeScope is disposed
+const Stream.empty().listen((event) {}).disposed(disposeScope);
+
+// Timer will be cancelled when disposeScope is disposed
+Timer(Duration.zero, () {}).disposed(disposeScope);
+
+disposeScope.dispose();
+```
+
+## Supported types
+
+This package contains extension methods for dart standard library classes requiring clean up. For additional extension methods checkout [flutter_dispose_scope](https://pub.dev/packages/flutter_dispose_scope) and [bloc_dispose_scope](https://pub.dev/packages/bloc_dispose_scope).
