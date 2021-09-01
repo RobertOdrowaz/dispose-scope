@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_dispose_scope/bloc_dispose_scope.dart';
-import 'package:dispose_scope/dispose_scope.dart';
 
 class DependencyCubit extends Cubit<String> {
   DependencyCubit() : super('');

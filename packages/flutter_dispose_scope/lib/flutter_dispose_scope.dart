@@ -1,3 +1,5 @@
+export 'package:dispose_scope/dispose_scope.dart';
+
 export 'src/disposed_extensions/animation_eager_listener_mixin_disposed.dart';
 export 'src/disposed_extensions/box_painter_disposed.dart';
 export 'src/disposed_extensions/change_notifier_disposed.dart';

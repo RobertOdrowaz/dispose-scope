@@ -3,7 +3,6 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dispose_scope/flutter_dispose_scope.dart';
-import 'package:dispose_scope/dispose_scope.dart';
 
 void main() {
   runApp(MyApp());
