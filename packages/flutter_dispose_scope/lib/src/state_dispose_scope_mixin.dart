@@ -1,6 +1,5 @@
 import 'package:dispose_scope/dispose_scope.dart';
 import 'package:flutter/widgets.dart';
-import 'package:meta/meta.dart';
 
 mixin StateDisposeScopeMixin<T extends StatefulWidget> on State<T> {
   var _scope = DisposeScope();
