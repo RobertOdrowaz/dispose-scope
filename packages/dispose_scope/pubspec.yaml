@@ -1,5 +1,5 @@
 name: dispose_scope
-description: Package reducing boiler related to disposing/canceling/closing objects.
+description: Simple package making it easy to dispose (aka cancel, aka close) your objects.
 version: 1.0.0
 repository: https://github.com/RobertOdrowaz/dispose-scope/tree/master/packages/dispose_scope
 issue_tracker: https://github.com/RobertOdrowaz/dispose-scope/issues
