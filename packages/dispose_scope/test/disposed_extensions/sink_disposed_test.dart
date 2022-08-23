@@ -17,7 +17,7 @@ void main() {
       setUp(
         () {
           scope = DisposeScope();
-          sink = MockSink();
+          sink = MockSink<void>();
         },
       );
 

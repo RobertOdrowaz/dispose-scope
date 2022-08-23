@@ -28,9 +28,10 @@ void main() {
       test(
         'calls all disposes when dispose is called',
         () async {
-          scope.addDispose(() async => disposable1.dispose());
-          scope.addDispose(() async => disposable2.dispose());
-          scope.addDispose(() async => disposable3.dispose());
+          scope
+            ..addDispose(() async => disposable1.dispose())
+            ..addDispose(() async => disposable2.dispose())
+            ..addDispose(() async => disposable3.dispose());
 
           await scope.dispose();
 
@@ -43,9 +44,10 @@ void main() {
       test(
         'calls disposes in reverse order to addition when dispose is called',
         () async {
-          scope.addDispose(() async => disposable1.dispose());
-          scope.addDispose(() async => disposable2.dispose());
-          scope.addDispose(() async => disposable3.dispose());
+          scope
+            ..addDispose(() async => disposable1.dispose())
+            ..addDispose(() async => disposable2.dispose())
+            ..addDispose(() async => disposable3.dispose());
 
           await scope.dispose();
 
