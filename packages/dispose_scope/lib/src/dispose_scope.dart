@@ -1,21 +1,20 @@
 import 'package:dispose_scope/src/dispose.dart';
 
-/// Groups many [DisposeCallback]s together and allows for disposing of all of
-/// them at once.
+/// Groups many [Dispose]s together and allows for disposing of all of them at
+/// once.
 ///
-/// [DisposeCallback]s are disposed synchronously in the LIFO order.
+/// [Dispose]s are disposed synchronously in the LIFO order.
 class DisposeScope {
-  final _disposes = <DisposeCallback>[];
+  final _disposes = <Dispose>[];
 
-  /// Adds this [disposeCallback] to this [DisposeScope]'s internal list of
-  /// [DisposeCallback]s.
+  /// Adds this [dispose] to this [DisposeScope]'s internal list of [Dispose]s.
   ///
-  /// [disposeCallback] will be called when this [DisposeScope] is disposed.
-  void addDispose(DisposeCallback disposeCallback) {
-    _disposes.add(disposeCallback);
+  /// [dispose] will be called when this [DisposeScope] is disposed.
+  void addDispose(Dispose dispose) {
+    _disposes.add(dispose);
   }
 
-  /// Disposes all added [DisposeCallback]s.
+  /// Disposes all added [Dispose]s.
   Future<void> dispose() async {
     for (final dispose in _disposes.reversed) {
       await dispose();

@@ -29,8 +29,8 @@ class MockDisposeScope extends _i1.Mock implements _i2.DisposeScope {
   }
 
   @override
-  void addDispose(_i3.DisposeCallback? disposeCallback) =>
-      super.noSuchMethod(Invocation.method(#addDispose, [disposeCallback]),
+  void addDispose(_i3.Dispose? dispose) =>
+      super.noSuchMethod(Invocation.method(#addDispose, [dispose]),
           returnValueForMissingStub: null);
   @override
   _i4.Future<void> dispose() => (super.noSuchMethod(

@@ -4,4 +4,4 @@ import 'package:dispose_scope/dispose_scope.dart';
 ///
 /// Even though this function is asynchronous, it should finish fast. The longer
 /// it executes, the longer the call to [DisposeScope.dispose] takes.
-typedef DisposeCallback = Future<void> Function();
+typedef Dispose = Future<void> Function();
