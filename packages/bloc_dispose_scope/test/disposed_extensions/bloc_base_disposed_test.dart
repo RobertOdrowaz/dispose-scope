@@ -7,7 +7,12 @@ import 'package:test/test.dart';
 
 import 'bloc_base_disposed_test.mocks.dart';
 
-@GenerateMocks([BlocBase])
+@GenerateMocks(
+  [],
+  customMocks: [
+    MockSpec<BlocBase>(unsupportedMembers: {#state})
+  ],
+)
 void main() {
   group(
     'BlocBaseDisposed',
