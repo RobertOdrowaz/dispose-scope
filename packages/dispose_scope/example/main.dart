@@ -6,7 +6,7 @@ void main() {
   final disposeScope = DisposeScope();
 
   // StreamSubscription will be cancelled when disposeScope is disposed
-  const Stream.empty().listen((event) {}).disposed(disposeScope);
+  const Stream<void>.empty().listen((dynamicevent) {}).disposed(disposeScope);
 
   // Timer will be cancelled when disposeScope is disposed
   Timer(Duration.zero, () {}).disposed(disposeScope);

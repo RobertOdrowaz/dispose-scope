@@ -19,7 +19,7 @@ void main() {
       setUp(
         () {
           scope = DisposeScope();
-          connectionTask = MockConnectionTask();
+          connectionTask = MockConnectionTask<void>();
         },
       );
 

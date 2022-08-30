@@ -20,7 +20,7 @@ void main() {
       setUp(
         () {
           scope = DisposeScope();
-          streamSubscription = MockStreamSubscription();
+          streamSubscription = MockStreamSubscription<void>();
         },
       );
 

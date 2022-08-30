@@ -22,8 +22,8 @@ void main() {
   final disposeScope = DisposeScope();
 
   // Both cubits will be disposed when disposeScope is disposed
-  final _dependencyCubit = DependencyCubit()..disposed(disposeScope);
-  MainCubit(_dependencyCubit).disposed(disposeScope);
+  final dependencyCubit = DependencyCubit()..disposed(disposeScope);
+  MainCubit(dependencyCubit).disposed(disposeScope);
 
   disposeScope.dispose();
 }
