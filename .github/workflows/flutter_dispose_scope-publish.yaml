@@ -1,0 +1,56 @@
+name: flutter_dispose_scope publish
+
+on:
+  push:
+    tags: ["flutter_dispose_scope-v*"]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: packages/flutter_dispose_scope
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Install Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 2.17.0
+
+      - name: Install mobile-tools
+        uses: actions/checkout@v3
+        with:
+          repository: leancodepl/mobile-tools
+          path: mobile-tools
+
+      - name: Add mobile-tools to PATH
+        run: |
+          echo $GITHUB_WORKSPACE/mobile-tools/bin >> $GITHUB_PATH
+
+      - name: Download pub.dev credentials
+        env:
+          CREDENTIALS: ${{ secrets.PUB_DEV_CREDENTIALS }}
+        run: |
+          mkdir -p ~/.pub-cache
+          echo $CREDENTIALS > ~/.pub-cache/credentials.json
+
+      - name: Set version data
+        run: |
+          package_name=flutter_dispose_scope
+          tag=${{ github.ref_name }}
+          echo "RELEASE_NOTES=$(link_changelog $package_name $tag)" >> $GITHUB_ENV
+          echo "IS_PRERELEASE=$(is_prerelease $package_name $tag)" >> $GITHUB_ENV
+
+      - name: Publish
+        run: dart pub publish -f
+
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: ${{ github.ref_name }}
+          body: ${{ env.RELEASE_NOTES }}
+          prerelease: ${{ env.IS_PRERELEASE }}
