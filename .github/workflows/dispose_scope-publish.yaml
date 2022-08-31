@@ -42,7 +42,7 @@ jobs:
         run: |
           package_name=dispose_scope
           tag=${{ github.ref_name }}
-          echo "RELEASE_NOTES=$(link-changelog $package_name $tag)" >> $GITHUB_ENV
+          echo "RELEASE_NOTES=$(link_changelog $package_name $tag)" >> $GITHUB_ENV
           echo "IS_PRERELEASE=$(is_prerelease $package_name $tag)" >> $GITHUB_ENV
 
       - name: Publish
