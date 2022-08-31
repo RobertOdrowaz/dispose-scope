@@ -13,7 +13,7 @@ extension DisposeScopeDisposed on DisposeScope {
   /// It will be disposed when [parentDisposeScope] is disposed.
   void disposedBy(DisposeScope parentDisposeScope) {
     if (parentDisposeScope == this) {
-      throw Exception(
+      throw StateError(
         '''
 Dispose scope cannot contain itself.
 
