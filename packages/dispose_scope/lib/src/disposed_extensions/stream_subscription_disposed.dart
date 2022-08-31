@@ -7,7 +7,7 @@ extension StreamSubscriptionDisposed on StreamSubscription {
   /// Adds this stream subscription to [disposeScope].
   ///
   /// It will be canceled when [disposeScope] is disposed.
-  void disposed(DisposeScope disposeScope) {
+  void disposedBy(DisposeScope disposeScope) {
     disposeScope.addDispose(() async => cancel());
   }
 }

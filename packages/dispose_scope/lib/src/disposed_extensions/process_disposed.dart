@@ -7,7 +7,7 @@ extension ProcessDisposed on Process {
   /// Adds this process to [disposeScope].
   ///
   /// It will be killed when [disposeScope] is disposed.
-  void disposed(DisposeScope disposeScope) {
+  void disposedBy(DisposeScope disposeScope) {
     disposeScope.addDispose(() async => kill());
   }
 }

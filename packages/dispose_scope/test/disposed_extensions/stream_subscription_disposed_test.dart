@@ -27,7 +27,7 @@ void main() {
       test(
         'adds Dispose to DisposeScope when disposed is called',
         () async {
-          streamSubscription.disposed(scope);
+          streamSubscription.disposedBy(scope);
 
           await scope.dispose();
 

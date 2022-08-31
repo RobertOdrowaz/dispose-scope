@@ -24,7 +24,7 @@ void main() {
       test(
         'adds Dispose to DisposeScope when disposed is called',
         () async {
-          disposeScope.disposed(scope);
+          disposeScope.disposedBy(scope);
 
           await scope.dispose();
 
@@ -35,7 +35,7 @@ void main() {
       test(
         'throws Exception when disposed is called with the same store',
         () async {
-          expect(() => disposeScope.disposed(disposeScope), throwsException);
+          expect(() => disposeScope.disposedBy(disposeScope), throwsException);
         },
       );
     },
