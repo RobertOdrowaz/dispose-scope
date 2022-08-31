@@ -1,4 +1,4 @@
-## Unreleased
+## 2.0.0
 
 - Add safety checks (#25)
   - Throw `StateError` if `DisposeScope.dispose()` is called more than once
