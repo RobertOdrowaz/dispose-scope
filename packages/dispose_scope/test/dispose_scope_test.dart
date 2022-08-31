@@ -60,6 +60,36 @@ void main() {
           );
         },
       );
+
+      test(
+          'throws StateError when adding a new dispose after the scope is disposed',
+          () async {
+        scope
+          ..addDispose(() async {})
+          ..addDispose(() async {});
+
+        await scope.dispose();
+
+        expect(() => scope.addDispose(() async {}), throwsStateError);
+      });
+
+      test('throws StateError when trying to dispose it more than once',
+          () async {
+        scope.addDispose(() async {});
+
+        await scope.dispose();
+
+        expect(scope.dispose(), throwsStateError);
+      });
+
+      test('calls run() only if not disposed', () async {
+        var counter = 0;
+
+        await scope.dispose();
+        await scope.run((scope) async => counter = 1);
+
+        expect(counter, 0);
+      });
     },
   );
 }
