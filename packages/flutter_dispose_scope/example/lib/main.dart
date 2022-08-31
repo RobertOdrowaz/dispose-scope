@@ -21,10 +21,10 @@ class _AppState extends State<App> with StateDisposeScopeMixin {
     super.initState();
 
     // StreamSubscription will be cancelled when widget is disposed
-    const Stream.empty().listen((event) {}).disposed(scope);
+    const Stream.empty().listen((event) {}).disposedBy(scope);
 
     // Timer will be cancelled when widget is disposed
-    Timer(Duration.zero, () {}).disposed(scope);
+    Timer(Duration.zero, () {}).disposedBy(scope);
   }
 
   @override
