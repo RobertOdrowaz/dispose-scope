@@ -7,7 +7,7 @@ extension ConnectionTaskDisposed on ConnectionTask {
   /// Adds this connection task to [disposeScope].
   ///
   /// It will be canceled when [disposeScope] is disposed.
-  void disposed(DisposeScope disposeScope) {
+  void disposedBy(DisposeScope disposeScope) {
     disposeScope.addDispose(() async => cancel());
   }
 }

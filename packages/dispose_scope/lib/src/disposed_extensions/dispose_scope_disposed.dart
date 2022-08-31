@@ -11,7 +11,7 @@ extension DisposeScopeDisposed on DisposeScope {
   /// Adds this dispose scope to [parentDisposeScope].
   ///
   /// It will be disposed when [parentDisposeScope] is disposed.
-  void disposed(DisposeScope parentDisposeScope) {
+  void disposedBy(DisposeScope parentDisposeScope) {
     if (parentDisposeScope == this) {
       throw Exception(
         '''

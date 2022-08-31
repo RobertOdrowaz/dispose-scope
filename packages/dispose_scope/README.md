@@ -13,10 +13,10 @@ import 'package:dispose_scope/dispose_scope.dart';
 final disposeScope = DisposeScope();
 
 // StreamSubscription will be cancelled when disposeScope is disposed
-const Stream.empty().listen((event) {}).disposed(disposeScope);
+const Stream.empty().listen((event) {}).disposedBy(disposeScope);
 
 // Timer will be cancelled when disposeScope is disposed
-Timer(Duration.zero, () {}).disposed(disposeScope);
+Timer(Duration.zero, () {}).disposedBy(disposeScope);
 
 disposeScope.dispose();
 ```

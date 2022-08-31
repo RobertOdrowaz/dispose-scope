@@ -26,7 +26,7 @@ void main() {
       test(
         'adds Dispose to DisposeScope when disposed is called',
         () async {
-          timer.disposed(scope);
+          timer.disposedBy(scope);
 
           await scope.dispose();
 

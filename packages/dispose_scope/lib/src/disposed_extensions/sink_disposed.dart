@@ -5,7 +5,7 @@ extension SinkDisposed on Sink {
   /// Adds this sink to [disposeScope].
   ///
   /// It will be closed when [disposeScope] is disposed.
-  void disposed(DisposeScope disposeScope) {
+  void disposedBy(DisposeScope disposeScope) {
     disposeScope.addDispose(() async => close());
   }
 }
