@@ -35,7 +35,7 @@ void main() {
       test(
         'throws Exception when disposed is called with the same store',
         () async {
-          expect(() => disposeScope.disposedBy(disposeScope), throwsException);
+          expect(() => disposeScope.disposedBy(disposeScope), throwsStateError);
         },
       );
     },
