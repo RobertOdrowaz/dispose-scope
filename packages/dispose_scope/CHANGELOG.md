@@ -1,3 +1,7 @@
+## 2.0.1
+
+- Fix extensions for `Process` from `dart:io` not being exported (#30)
+
 ## 2.0.0
 
 - Add safety checks (#25)
@@ -9,4 +13,4 @@
 
 ## 1.0.0
 
-- Initial Release
+- Initial release
