@@ -10,7 +10,7 @@ environment:
 
 dependencies:
   bloc: ^8.0.0
-  dispose_scope: ^1.0.0
+  dispose_scope: ^2.0.0
   meta: ^1.3.0
 
 dev_dependencies:

@@ -10,7 +10,7 @@ class MainCubit extends Cubit<String> with BlocBaseDisposeScopeMixin {
     // StreamSubscription will be cancelled when MainCubit is closed
     _dependencyCubit.stream
         .listen(_onDependencyCubitStateChanged)
-        .disposed(scope);
+        .disposedBy(scope);
   }
 
   final DependencyCubit _dependencyCubit;
@@ -22,8 +22,8 @@ void main() {
   final disposeScope = DisposeScope();
 
   // Both cubits will be disposed when disposeScope is disposed
-  final dependencyCubit = DependencyCubit()..disposed(disposeScope);
-  MainCubit(dependencyCubit).disposed(disposeScope);
+  final dependencyCubit = DependencyCubit()..disposedBy(disposeScope);
+  MainCubit(dependencyCubit).disposedBy(disposeScope);
 
   disposeScope.dispose();
 }
