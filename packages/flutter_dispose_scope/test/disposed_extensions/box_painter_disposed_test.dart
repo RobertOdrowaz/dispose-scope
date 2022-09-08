@@ -25,7 +25,7 @@ void main() {
       test(
         'adds Dispose to DisposeScope when disposed is called',
         () async {
-          boxPainter.disposed(scope);
+          boxPainter.disposedBy(scope);
 
           await scope.dispose();
 

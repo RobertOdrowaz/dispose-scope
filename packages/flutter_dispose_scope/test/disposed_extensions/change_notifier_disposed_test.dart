@@ -25,7 +25,7 @@ void main() {
       test(
         'adds Dispose to DisposeScope when disposed is called',
         () async {
-          changeNotifier.disposed(scope);
+          changeNotifier.disposedBy(scope);
 
           await scope.dispose();
 

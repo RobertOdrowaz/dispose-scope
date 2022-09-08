@@ -26,7 +26,7 @@ void main() {
       test(
         'adds Dispose to DisposeScope when disposed is called',
         () async {
-          state.disposed(scope);
+          state.disposedBy(scope);
 
           await scope.dispose();
 

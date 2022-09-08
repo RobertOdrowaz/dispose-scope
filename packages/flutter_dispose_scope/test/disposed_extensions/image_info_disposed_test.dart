@@ -25,7 +25,7 @@ void main() {
       test(
         'adds Dispose to DisposeScope when disposed is called',
         () async {
-          imageInfo.disposed(scope);
+          imageInfo.disposedBy(scope);
 
           await scope.dispose();
 
