@@ -27,7 +27,7 @@ void main() {
       test(
         'adds Dispose to DisposeScope when disposed is called',
         () async {
-          gestureRecognizer.disposed(scope);
+          gestureRecognizer.disposedBy(scope);
 
           await scope.dispose();
 

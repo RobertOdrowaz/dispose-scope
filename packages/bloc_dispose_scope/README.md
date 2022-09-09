@@ -1,6 +1,6 @@
-# BlocDisposeScope
+# bloc_dispose_scope
 
-BlocDisposeScope adds support for bloc related types to [dispose_scope](https://pub.dev/packages/dispose_scope) package.
+This package adds support for bloc related types to [dispose_scope] package.
 
 ## Usage
 
@@ -12,7 +12,7 @@ class MainCubit extends Cubit<String> with BlocBaseDisposeScopeMixin {
     // StreamSubscription will be cancelled when MainCubit is closed
     _dependencyCubit.stream
         .listen(_onDependencyCubitStateChanged)
-        .disposed(scope);
+        .disposedBy(scope);
   }
 
   final DependencyCubit _dependencyCubit;
@@ -20,3 +20,5 @@ class MainCubit extends Cubit<String> with BlocBaseDisposeScopeMixin {
   void _onDependencyCubitStateChanged(String dependencyState) {}
 }
 ```
+
+[dispose_scope]: https://pub.dev/packages/dispose_scope
