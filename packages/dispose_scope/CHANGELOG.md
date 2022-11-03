@@ -1,6 +1,6 @@
 ## 2.0.1
 
-- Fix extensions for `Process` from `dart:io` not being exported (#30)
+- Add annotations to `Disposable`'s methods (#32)
 
 ## 2.0.0
 
