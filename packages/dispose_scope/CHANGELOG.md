@@ -1,6 +1,6 @@
 ## 2.1.0
 
-- Allow for synchronous `Dispose` through `FutureOr`
+- Allow for synchronous `Dispose` through `FutureOr` (#34)
 
 ## 2.0.1
 
