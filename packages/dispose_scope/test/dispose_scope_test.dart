@@ -86,7 +86,7 @@ void main() {
         var counter = 0;
 
         await scope.dispose();
-        await scope.run((scope) async => counter = 1);
+        await scope.run((scope) => counter = 1);
 
         expect(counter, 0);
       });
