@@ -29,9 +29,9 @@ void main() {
         'calls all disposes when dispose is called',
         () async {
           scope
-            ..addDispose(() async => disposable1.dispose())
-            ..addDispose(() async => disposable2.dispose())
-            ..addDispose(() async => disposable3.dispose());
+            ..addDispose(disposable1.dispose)
+            ..addDispose(disposable2.dispose)
+            ..addDispose(disposable3.dispose);
 
           await scope.dispose();
 
@@ -45,9 +45,9 @@ void main() {
         'calls disposes in reverse order to addition when dispose is called',
         () async {
           scope
-            ..addDispose(() async => disposable1.dispose())
-            ..addDispose(() async => disposable2.dispose())
-            ..addDispose(() async => disposable3.dispose());
+            ..addDispose(disposable1.dispose)
+            ..addDispose(disposable2.dispose)
+            ..addDispose(disposable3.dispose);
 
           await scope.dispose();
 
@@ -65,12 +65,12 @@ void main() {
           'throws StateError when adding a new dispose after the scope is disposed',
           () async {
         scope
-          ..addDispose(() async {})
-          ..addDispose(() async {});
+          ..addDispose(() {})
+          ..addDispose(() {});
 
         await scope.dispose();
 
-        expect(() => scope.addDispose(() async {}), throwsStateError);
+        expect(() => scope.addDispose(() {}), throwsStateError);
       });
 
       test('throws StateError when trying to dispose it more than once',

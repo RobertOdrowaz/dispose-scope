@@ -8,6 +8,6 @@ extension TimerDisposed on Timer {
   ///
   /// It will be canceled when [disposeScope] is disposed.
   void disposedBy(DisposeScope disposeScope) {
-    disposeScope.addDispose(() async => cancel());
+    disposeScope.addDispose(cancel);
   }
 }
