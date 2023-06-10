@@ -2,13 +2,11 @@ import 'dart:io';
 
 import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:dispose_scope/src/disposed_extensions/connection_task_disposed.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import 'connection_task_disposed_test.mocks.dart';
+class MockConnectionTask<T> extends Mock implements ConnectionTask<T> {}
 
-@GenerateMocks([ConnectionTask])
 void main() {
   group(
     'ConnectionTaskDisposed',
@@ -30,7 +28,7 @@ void main() {
 
           await scope.dispose();
 
-          verify(connectionTask.cancel()).called(1);
+          verify(() => connectionTask.cancel()).called(1);
         },
       );
     },

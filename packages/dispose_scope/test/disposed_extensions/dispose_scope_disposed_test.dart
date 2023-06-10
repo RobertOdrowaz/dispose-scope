@@ -1,12 +1,10 @@
 import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:dispose_scope/src/disposed_extensions/dispose_scope_disposed.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import 'dispose_scope_disposed_test.mocks.dart';
+class MockDisposeScope extends Mock implements DisposeScope {}
 
-@GenerateMocks([DisposeScope])
 void main() {
   group(
     'ConnectionTaskDisposed',
@@ -24,11 +22,12 @@ void main() {
       test(
         'adds Dispose to DisposeScope when disposed is called',
         () async {
+          when(() => disposeScope.dispose()).thenAnswer((_) async {});
           disposeScope.disposedBy(scope);
 
           await scope.dispose();
 
-          verify(disposeScope.dispose()).called(1);
+          verify(() => disposeScope.dispose()).called(1);
         },
       );
 

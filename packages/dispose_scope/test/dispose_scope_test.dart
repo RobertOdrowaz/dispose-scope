@@ -1,12 +1,11 @@
 import 'package:dispose_scope/src/dispose_scope.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 import 'disposable.dart';
-import 'dispose_scope_test.mocks.dart';
 
-@GenerateMocks([Disposable])
+class MockDisposable extends Mock implements Disposable {}
+
 void main() {
   group(
     'DisposeScope',
@@ -35,9 +34,9 @@ void main() {
 
           await scope.dispose();
 
-          verify(disposable1.dispose()).called(1);
-          verify(disposable2.dispose()).called(1);
-          verify(disposable3.dispose()).called(1);
+          verify(() => disposable1.dispose()).called(1);
+          verify(() => disposable2.dispose()).called(1);
+          verify(() => disposable3.dispose()).called(1);
         },
       );
 
@@ -53,9 +52,9 @@ void main() {
 
           verifyInOrder(
             [
-              disposable3.dispose(),
-              disposable2.dispose(),
-              disposable1.dispose(),
+              () => disposable3.dispose(),
+              () => disposable2.dispose(),
+              () => disposable1.dispose(),
             ],
           );
         },
