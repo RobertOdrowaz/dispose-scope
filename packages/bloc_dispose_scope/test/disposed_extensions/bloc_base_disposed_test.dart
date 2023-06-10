@@ -1,18 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_dispose_scope/src/disposed_extensions/bloc_base_disposed.dart';
 import 'package:dispose_scope/src/dispose_scope.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import 'bloc_base_disposed_test.mocks.dart';
+class MockBlocBase<T> extends Mock implements BlocBase<T> {}
 
-@GenerateMocks(
-  [],
-  customMocks: [
-    MockSpec<BlocBase>(unsupportedMembers: {#state})
-  ],
-)
 void main() {
   group(
     'BlocBaseDisposed',
@@ -30,11 +23,13 @@ void main() {
       test(
         'adds Dispose to DisposeScope when disposed is called',
         () async {
+          when(() => blocBase.close()).thenAnswer((_) async {});
+
           blocBase.disposedBy(scope);
 
           await scope.dispose();
 
-          verify(blocBase.close()).called(1);
+          verify(() => blocBase.close()).called(1);
         },
       );
     },
