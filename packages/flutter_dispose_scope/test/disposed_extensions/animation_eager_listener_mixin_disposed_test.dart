@@ -2,12 +2,11 @@ import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter_dispose_scope/src/disposed_extensions/animation_eager_listener_mixin_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
-import 'animation_eager_listener_mixin_disposed_test.mocks.dart';
+class MockAnimationEagerListenerMixin extends Mock
+    implements AnimationEagerListenerMixin {}
 
-@GenerateMocks([AnimationEagerListenerMixin])
 void main() {
   group(
     'AnimationEagerListenerMixinDisposed',
@@ -29,7 +28,7 @@ void main() {
 
           await scope.dispose();
 
-          verify(animationEagerListenerMixin.dispose()).called(1);
+          verify(() => animationEagerListenerMixin.dispose()).called(1);
         },
       );
     },

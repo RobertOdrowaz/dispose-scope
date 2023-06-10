@@ -2,12 +2,10 @@ import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dispose_scope/src/disposed_extensions/scroll_drag_controller_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
-import 'scroll_drag_controller_disposed_test.mocks.dart';
+class MockScrollDragController extends Mock implements ScrollDragController {}
 
-@GenerateMocks([ScrollDragController])
 void main() {
   group(
     'ScrollDragControllerDisposed',
@@ -29,7 +27,7 @@ void main() {
 
           await scope.dispose();
 
-          verify(scrollDragController.dispose()).called(1);
+          verify(() => scrollDragController.dispose()).called(1);
         },
       );
     },

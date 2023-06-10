@@ -3,7 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dispose_scope/src/disposed_extensions/gesture_recognizer_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 class MockGestureRecognizer extends Mock implements GestureRecognizer {
   @override
@@ -31,7 +31,7 @@ void main() {
 
           await scope.dispose();
 
-          verify(gestureRecognizer.dispose()).called(1);
+          verify(() => gestureRecognizer.dispose()).called(1);
         },
       );
     },

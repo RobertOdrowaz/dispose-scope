@@ -2,12 +2,11 @@ import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_dispose_scope/src/disposed_extensions/image_stream_completer_handle_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
-import 'image_stream_completer_handle_disposed_test.mocks.dart';
+class MockImageStreamCompleterHandle extends Mock
+    implements ImageStreamCompleterHandle {}
 
-@GenerateMocks([ImageStreamCompleterHandle])
 void main() {
   group(
     'ImageStreamCompleterHandleDisposed',
@@ -29,7 +28,7 @@ void main() {
 
           await scope.dispose();
 
-          verify(imageStreamCompleterHandle.dispose()).called(1);
+          verify(() => imageStreamCompleterHandle.dispose()).called(1);
         },
       );
     },
