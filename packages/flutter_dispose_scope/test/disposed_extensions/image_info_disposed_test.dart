@@ -2,12 +2,11 @@ import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_dispose_scope/src/disposed_extensions/image_info_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
-import 'image_info_disposed_test.mocks.dart';
+// ignore: avoid_implementing_value_types
+class MockImageInfo extends Mock implements ImageInfo {}
 
-@GenerateMocks([ImageInfo])
 void main() {
   group(
     'ImageInfoDisposed',
@@ -29,7 +28,7 @@ void main() {
 
           await scope.dispose();
 
-          verify(imageInfo.dispose()).called(1);
+          verify(() => imageInfo.dispose()).called(1);
         },
       );
     },

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dispose_scope/src/dispose.dart';
 
 /// Groups many [Dispose]s together and allows for disposing of all of them at
@@ -39,7 +41,7 @@ class DisposeScope {
 
   /// Calls [block] only if this dispose scope is not yet disposed. Otherwise,
   /// it's a no-op.
-  Future<void> run(Future<void> Function(DisposeScope scope) block) async {
+  Future<void> run(FutureOr<void> Function(DisposeScope scope) block) async {
     if (!_disposed) {
       await block(this);
     }

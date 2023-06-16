@@ -1,12 +1,11 @@
 import 'package:dispose_scope/src/dispose_scope.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
 import 'disposable.dart';
-import 'dispose_scope_test.mocks.dart';
 
-@GenerateMocks([Disposable])
+class MockDisposable extends Mock implements Disposable {}
+
 void main() {
   group(
     'DisposeScope',
@@ -29,15 +28,15 @@ void main() {
         'calls all disposes when dispose is called',
         () async {
           scope
-            ..addDispose(() async => disposable1.dispose())
-            ..addDispose(() async => disposable2.dispose())
-            ..addDispose(() async => disposable3.dispose());
+            ..addDispose(disposable1.dispose)
+            ..addDispose(disposable2.dispose)
+            ..addDispose(disposable3.dispose);
 
           await scope.dispose();
 
-          verify(disposable1.dispose()).called(1);
-          verify(disposable2.dispose()).called(1);
-          verify(disposable3.dispose()).called(1);
+          verify(() => disposable1.dispose()).called(1);
+          verify(() => disposable2.dispose()).called(1);
+          verify(() => disposable3.dispose()).called(1);
         },
       );
 
@@ -45,17 +44,17 @@ void main() {
         'calls disposes in reverse order to addition when dispose is called',
         () async {
           scope
-            ..addDispose(() async => disposable1.dispose())
-            ..addDispose(() async => disposable2.dispose())
-            ..addDispose(() async => disposable3.dispose());
+            ..addDispose(disposable1.dispose)
+            ..addDispose(disposable2.dispose)
+            ..addDispose(disposable3.dispose);
 
           await scope.dispose();
 
           verifyInOrder(
             [
-              disposable3.dispose(),
-              disposable2.dispose(),
-              disposable1.dispose(),
+              () => disposable3.dispose(),
+              () => disposable2.dispose(),
+              () => disposable1.dispose(),
             ],
           );
         },
@@ -65,12 +64,12 @@ void main() {
           'throws StateError when adding a new dispose after the scope is disposed',
           () async {
         scope
-          ..addDispose(() async {})
-          ..addDispose(() async {});
+          ..addDispose(() {})
+          ..addDispose(() {});
 
         await scope.dispose();
 
-        expect(() => scope.addDispose(() async {}), throwsStateError);
+        expect(() => scope.addDispose(() {}), throwsStateError);
       });
 
       test('throws StateError when trying to dispose it more than once',
@@ -86,7 +85,7 @@ void main() {
         var counter = 0;
 
         await scope.dispose();
-        await scope.run((scope) async => counter = 1);
+        await scope.run((scope) => counter = 1);
 
         expect(counter, 0);
       });

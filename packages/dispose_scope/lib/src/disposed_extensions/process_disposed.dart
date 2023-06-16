@@ -8,6 +8,6 @@ extension ProcessDisposed on Process {
   ///
   /// It will be killed when [disposeScope] is disposed.
   void disposedBy(DisposeScope disposeScope) {
-    disposeScope.addDispose(() async => kill());
+    disposeScope.addDispose(kill);
   }
 }

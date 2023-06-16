@@ -2,12 +2,10 @@ import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dispose_scope/src/disposed_extensions/change_notifier_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
-import 'change_notifier_disposed_test.mocks.dart';
+class MockChangeNotifier extends Mock implements ChangeNotifier {}
 
-@GenerateMocks([ChangeNotifier])
 void main() {
   group(
     'ChangeNotifierDisposed',
@@ -29,7 +27,7 @@ void main() {
 
           await scope.dispose();
 
-          verify(changeNotifier.dispose()).called(1);
+          verify(() => changeNotifier.dispose()).called(1);
         },
       );
     },

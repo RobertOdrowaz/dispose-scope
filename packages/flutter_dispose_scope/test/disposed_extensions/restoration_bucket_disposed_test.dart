@@ -2,12 +2,10 @@ import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dispose_scope/src/disposed_extensions/restoration_bucket_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
-import 'restoration_bucket_disposed_test.mocks.dart';
+class MockRestorationBucket extends Mock implements RestorationBucket {}
 
-@GenerateMocks([RestorationBucket])
 void main() {
   group(
     'RestorationBucketDisposed',
@@ -29,7 +27,7 @@ void main() {
 
           await scope.dispose();
 
-          verify(restorationBucket.dispose()).called(1);
+          verify(() => restorationBucket.dispose()).called(1);
         },
       );
     },

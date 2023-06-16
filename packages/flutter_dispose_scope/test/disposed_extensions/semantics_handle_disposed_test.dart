@@ -1,12 +1,10 @@
 import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:flutter_dispose_scope/src/disposed_extensions/semantics_handle_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
-import 'semantics_handle_disposed_test.mocks.dart';
+class MockSemanticsHandle extends Mock implements SemanticsHandle {}
 
-@GenerateMocks([SemanticsHandle])
 void main() {
   group(
     'SemanticsHandleDisposed',
@@ -28,7 +26,7 @@ void main() {
 
           await scope.dispose();
 
-          verify(semanticsHandle.dispose()).called(1);
+          verify(() => semanticsHandle.dispose()).called(1);
         },
       );
     },

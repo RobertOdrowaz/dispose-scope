@@ -2,7 +2,7 @@ import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_dispose_scope/src/disposed_extensions/ticker_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 class MockTicker extends Mock implements Ticker {
   @override
@@ -30,7 +30,7 @@ void main() {
 
           await scope.dispose();
 
-          verify(ticker.dispose()).called(1);
+          verify(() => ticker.dispose()).called(1);
         },
       );
     },

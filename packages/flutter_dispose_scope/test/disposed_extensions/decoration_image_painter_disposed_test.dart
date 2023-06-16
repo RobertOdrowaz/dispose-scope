@@ -2,12 +2,11 @@ import 'package:dispose_scope/src/dispose_scope.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dispose_scope/src/disposed_extensions/decoration_image_painter_disposed.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
-import 'decoration_image_painter_disposed_test.mocks.dart';
+class MockDecorationImagePainter extends Mock
+    implements DecorationImagePainter {}
 
-@GenerateMocks([DecorationImagePainter])
 void main() {
   group(
     'DecorationImagePainterDisposed',
@@ -29,7 +28,7 @@ void main() {
 
           await scope.dispose();
 
-          verify(decorationImagePainter.dispose()).called(1);
+          verify(() => decorationImagePainter.dispose()).called(1);
         },
       );
     },
